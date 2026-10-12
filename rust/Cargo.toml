@@ -6,4 +6,17 @@ description = "VORTEX-256: an experimental Feistel block cipher with an AEAD mod
 license = "MIT"
 
 [dependencies]
+argon2 = "0.6.0"
+chacha20poly1305 = "0.11.0"
+getrandom = "0.4.3"
+hkdf = "0.13"
+ml-kem = { version = "0.3.2", features = ["hazmat", "zeroize"] }
+sha2 = "0.11"
+sha3 = "0.12"
+shake = "0.1"
+subtle = "2.6.1"
+x25519-dalek = { version = "3.0.0", features = ["static_secrets"] }
 zeroize = { version = "1", features = ["derive"] }
+
+[dev-dependencies]
+hex = "0.4.3"

@@ -4,6 +4,10 @@
 //! Key-dependent S-boxes via affine transformation over GF(2).
 //! AEAD mode: CTR + CBC-MAC.
 
+pub mod lms;
+pub mod pq;
+pub mod vault;
+
 use zeroize::Zeroize;
 
 // ============================================================================

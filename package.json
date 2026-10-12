@@ -1,20 +1,27 @@
 {
   "name": "vortex-256",
   "version": "0.1.0",
-  "description": "VORTEX-256: an experimental 256-bit-key, 128-bit-block Feistel cipher with an AEAD mode. Research code, not peer reviewed.",
+  "description": "Post-quantum encryption and signatures for wallets: ML-KEM-1024 + X25519 hybrid envelope, Argon2id vault, LMS/HSS with RFC 9858, and the experimental VORTEX-256 cipher.",
   "type": "module",
   "license": "MIT",
   "main": "src/vortex-cipher.ts",
   "scripts": {
     "test": "vitest run",
     "analyze": "tsx src/run-vortex-analysis.ts",
-    "vectors": "tsx scripts/gen-vectors.ts",
-    "typecheck": "tsc --noEmit"
+    "vectors": "tsx scripts/gen-vectors.ts && tsx scripts/gen-pq-vectors.ts && tsx scripts/gen-vault-vectors.ts && tsx scripts/gen-lms-cross.ts",
+    "typecheck": "tsc --noEmit",
+    "vectors:rfc": "curl -s https://www.rfc-editor.org/rfc/rfc8554.txt -o /tmp/rfc8554.txt && curl -s https://www.rfc-editor.org/rfc/rfc9858.txt -o /tmp/rfc9858.txt && node scripts/extract-rfc-vectors.mjs /tmp/rfc8554.txt /tmp/rfc9858.txt vectors"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
     "vitest": "^4.1.1"
+  },
+  "dependencies": {
+    "@noble/ciphers": "2.4.0",
+    "@noble/curves": "2.4.0",
+    "@noble/hashes": "2.4.0",
+    "@noble/post-quantum": "0.7.1"
   }
 }
