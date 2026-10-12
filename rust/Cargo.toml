@@ -1,0 +1,9 @@
+[package]
+name = "vortex256"
+version = "0.1.0"
+edition = "2021"
+description = "VORTEX-256: an experimental Feistel block cipher with an AEAD mode (research code, not peer reviewed)"
+license = "MIT"
+
+[dependencies]
+zeroize = { version = "1", features = ["derive"] }
